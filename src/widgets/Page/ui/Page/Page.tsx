@@ -33,7 +33,7 @@ export const Page: FC<PageProps> = (props) => {
         <div className={styles.content_container}>
             {children}
         </div>
-        <div ref={triggerRef} className={styles.trigger}/>
+        {onScrollEnd && <div ref={triggerRef} className={styles.trigger}/>}
     </main>
 
 }
