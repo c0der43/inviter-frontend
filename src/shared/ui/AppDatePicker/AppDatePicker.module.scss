@@ -1,0 +1,25 @@
+
+.AppDatePicker {
+  background: transparent !important;
+  height: fit-content !important;
+  border: black 2px solid;
+  border-radius: 8px;
+
+  input{
+    color: white !important;
+
+    &::placeholder{
+      color: white !important;
+    }
+  }
+
+  &:hover{
+    border: 2px solid blue !important;
+  }
+}
+
+.AppDatePickerWithWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

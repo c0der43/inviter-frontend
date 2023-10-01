@@ -1,0 +1,16 @@
+.AuthPage{
+  width: 100%;
+  background: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+}
+
+.img {
+  object-fit: cover;
+  max-width: 70%;
+}
+
+.authContent {
+  flex-grow: 1;
+  padding: 48px;
+}

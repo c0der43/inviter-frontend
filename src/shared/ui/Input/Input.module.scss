@@ -1,0 +1,48 @@
+.InputWrapper {
+  width: 100%;
+  //background: var(--input-bg-color);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  transition-duration: 200ms;
+}
+
+.Input{
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  outline: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+  .btn {
+    width: fit-content !important;
+    padding: 0 25px;
+    height: fit-content;
+  }
+
+.InputWithLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.s {
+  height: 32px;
+}
+
+.m {
+  height: 38px;
+}
+
+.l {
+  height: 44px;
+}
+
+.onFocus{
+  border: 2px solid blue;
+}

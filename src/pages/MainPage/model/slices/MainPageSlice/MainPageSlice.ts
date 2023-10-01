@@ -1,0 +1,42 @@
+import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {IEvent} from "@/entities/Event";
+import {MainPageSchema} from "@/pages/MainPage";
+import {fetchGetEventsWithPagination} from "@/pages/MainPage/model/services/fetchGetEvents/fetchGetEventsWithPagination.ts";
+import {StateSchema} from "@/app/providers/StoreProvider";
+
+const mainPageAdapter = createEntityAdapter<IEvent>({
+    selectId: (event) => event.id
+});
+
+export const mainPageSelectors = mainPageAdapter
+    .getSelectors<StateSchema>((state) =>
+        state?.mainPage || mainPageAdapter.getInitialState());
+
+export const mainPageSlice = createSlice({
+    name: 'mainPageSlice',
+    initialState: mainPageAdapter.getInitialState<MainPageSchema>({
+        isLoading: false,
+        ids: [],
+        entities: {},
+        page: 1,
+        limit: 3,
+        hasMore: true
+    }),
+    reducers: {
+        updatePage: (state) => {
+            state.page += 1;
+        }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchGetEventsWithPagination.fulfilled, (state, {payload}: PayloadAction<IEvent[]>) => {
+            state.isLoading = false;
+            state.hasMore = payload.length >= state.limit;
+            mainPageAdapter.addMany(state, payload);
+        })
+    }
+});
+
+export const {
+    reducer: mainPageReducer,
+    actions: mainPageActions
+} = mainPageSlice;

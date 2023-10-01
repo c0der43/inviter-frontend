@@ -1,0 +1,29 @@
+.PlacesAutoComplete {
+  position: relative;
+
+  .items_container {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+    z-index: 100;
+
+    .item {
+      color: var(--text);
+      cursor: pointer;
+      padding: 5px 8px;
+      transition-duration: 100ms;
+
+      &:hover {
+        color: var(--secondary-color);
+        background-color: #c9cacb;
+      }
+    }
+  }
+
+}

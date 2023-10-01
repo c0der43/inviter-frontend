@@ -1,0 +1,15 @@
+.EventInfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 70%;
+  flex-shrink: 0;
+
+  .img {
+    width: 100%;
+    border-radius: 8px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+}

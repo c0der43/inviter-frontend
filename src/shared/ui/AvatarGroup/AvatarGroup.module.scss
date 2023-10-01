@@ -1,0 +1,19 @@
+.AvatarGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .avatar {
+    transition-duration: 200ms;
+    cursor: pointer;
+    border: 2px solid white;
+
+    &:not(:first-child) {
+      margin-left: -15px;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.Container {
+  .logo_and_text{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+
+    .logo {
+      max-width: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .hello_text{
+    margin: 25px 0;
+  }
+
+  .auth_data{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn_login{
+    margin-top: 25px;
+    width: 100%;
+  }
+}

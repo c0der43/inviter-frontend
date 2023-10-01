@@ -1,0 +1,12 @@
+.TagsView {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .tag{
+    border: 1px solid var(--primary-color);
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+}

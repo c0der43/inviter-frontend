@@ -1,0 +1,25 @@
+.TextArea {
+  height: 250px;
+  resize: vertical;
+  max-height: 150px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition-duration: 300ms;
+  outline: none;
+
+  &:hover {
+
+  }
+}
+
+.TextAreaWithWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.outline {
+  background: transparent;
+  border-color: var(--primary-color);
+  color: var(--text);
+}

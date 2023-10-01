@@ -1,0 +1,71 @@
+.tag_input_container{
+  position: relative;
+}
+
+.TagInput {
+  display: flex;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  input{
+    background: transparent;
+    border: none;
+    color: var(--text);
+    outline: none;
+  }
+
+  .tags{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    .tag {
+      width: auto;
+      font-size: 16px;
+      height: 32px;
+      background: var(--secondary-color);
+      padding: 0 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      .close {
+        width: 20px;
+        cursor: pointer;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.items_container {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  margin-top: 8px;
+  overflow: hidden;
+  z-index: 100;
+
+  .item {
+    color: var(--text);
+    cursor: pointer;
+    padding: 5px 8px;
+    transition-duration: 100ms;
+
+    &:hover {
+      color: var(--secondary-color);
+      background-color: #c9cacb;
+    }
+  }
+}

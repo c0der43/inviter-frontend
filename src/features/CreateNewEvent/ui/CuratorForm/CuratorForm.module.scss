@@ -1,0 +1,11 @@
+.CuratorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .addContainer {
+    display: flex;
+    flex-shrink: 1;
+    justify-content: space-between;
+  }
+}

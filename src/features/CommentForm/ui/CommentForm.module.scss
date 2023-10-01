@@ -1,0 +1,24 @@
+.CommentForm {
+  display: flex;
+  align-items: center;
+
+  .AvatarAndComment{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+
+    textarea{
+      background: transparent;
+      border: none;
+      outline: none;
+      flex-wrap: wrap;
+      width: 100%;
+      height: fit-content;
+      color: var(--primary-color);
+      overflow: hidden;
+      min-height: 50px;
+      max-height: 100px;
+    }
+  }
+}
