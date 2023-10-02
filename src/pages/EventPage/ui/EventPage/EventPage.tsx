@@ -46,7 +46,9 @@ const EventPage: FC<EventPageProps> = memo((props) => {
             <Page>
                 <div className={classNames(styles.EventPage, className)}>
                     <EventInfoSection currentEvent={currentEvent}/>
-                    <EventOtherInfoSection className={styles.other_section} currentEvent={currentEvent}/>
+                    <EventOtherInfoSection
+                        className={styles.other_section}
+                        currentEvent={currentEvent}/>
                 </div>
             </Page>
         </AsyncReducersModule>

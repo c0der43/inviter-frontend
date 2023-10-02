@@ -29,13 +29,7 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props
             </Card>
 
             <Card title={'Люди'}>
-                <AvatarGroup urls={[
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                ]}/>
+                <AvatarGroup users={currentEvent?.invitedCurators ?? []}/>
             </Card>
         </section>
     </>

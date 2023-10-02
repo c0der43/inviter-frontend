@@ -22,7 +22,7 @@ export const EventInfoSection: FC<EventInfoSectionProps> = (props) => {
         <section className={classNames(styles.EventInfoSection, className)}>
             <AppImage
                 className={styles.img}
-                src={`http://localhost:5000/uploads_event/${currentEvent?.previewFile.fileName}`}/>
+                src={`http://localhost:5000/uploads_event/${currentEvent?.previewFile?.fileName}`}/>
 
             <Card>
                 <Text title={currentEvent?.name}/>
