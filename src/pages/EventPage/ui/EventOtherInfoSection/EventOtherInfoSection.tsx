@@ -1,28 +1,31 @@
-import {FC} from "react";
+import {FC, memo} from "react";
 import {Card} from "@/shared/ui/Card";
 import classNames from "classnames";
 import {TagsView} from "@/shared/ui/TagsView";
 import styles from './EventOtherInfoSection.module.scss';
 import {AvatarGroup} from "@/shared/ui/AvatarGroup";
 import {AppGoogleMap} from "@/shared/ui/AppGoogleMap";
+import {IEvent} from "@/entities/Event";
 
 interface EventOtherInfoSectionProps {
     className?: string;
+    currentEvent?: IEvent;
 }
-export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = (props) => {
+export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props) => {
 
     const {
+        currentEvent,
         className
     } = props;
 
     return <>
         <section className={classNames(styles.EventOtherInfoSection, className)}>
             <Card>
-                <AppGoogleMap choiceLocation={{lat:57.30331, lng: 47.88611}}/>
+                {currentEvent != undefined && <AppGoogleMap choiceLocation={{lat:Number(currentEvent?.locationLat), lng: Number(currentEvent?.locationLng)}}/>}
             </Card>
 
             <Card title={'Теги'}>
-                <TagsView tags={['первый','первый','первый','первый','первый','первый','первый','первый','первый']}/>
+                <TagsView tags={currentEvent?.tags ?? []}/>
             </Card>
 
             <Card title={'Люди'}>
@@ -37,4 +40,4 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = (props) => 
         </section>
     </>
 
-}
+});

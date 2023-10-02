@@ -2,7 +2,7 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {IEvent} from "@/entities/Event";
 import {ThunkConfig} from "@/app/providers/StoreProvider";
 
-export const fetchGetEventById = createAsyncThunk<IEvent, number, ThunkConfig<string>>(
+export const fetchGetEventById = createAsyncThunk<IEvent, string, ThunkConfig<string>>(
     'fetchGetEvenById',
     async (id, thunkAPI) => {
         const {

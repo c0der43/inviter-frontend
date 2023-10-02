@@ -55,7 +55,7 @@ export const EventItem: FC<EventItemProps> = memo((props) => {
                     </div>
 
                     <div className={styles.btnAndAvatars}>
-                        <AppLink to={getRouteEventDetails('2')}>
+                        <AppLink to={getRouteEventDetails(event.id.toString())}>
                             <Button size={'m'}>Перейти</Button>
                         </AppLink>
 

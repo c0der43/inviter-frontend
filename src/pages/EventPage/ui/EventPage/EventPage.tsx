@@ -7,6 +7,13 @@ import {EventOtherInfoSection} from "@/pages/EventPage/ui/EventOtherInfoSection/
 import {AsyncReducersModule} from "@/shared/lib/AsyncReducersModule/AsyncReducersModule.tsx";
 import {ReducerList} from "@/app/providers/StoreProvider/config/StateSchema.ts";
 import {eventPageReducer} from "@/pages/EventPage/model/slices/eventPageSlice.ts";
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
+import {fetchGetEventById} from "@/entities/Event";
+import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {
+    getEventCurrentEventSelector
+} from "@/pages/EventPage/model/selectors/getEventCurrentEventSelector/getEventCurrentEventSelector.ts";
 
 interface EventPageProps {
     className?: string;
@@ -22,16 +29,24 @@ const EventPage: FC<EventPageProps> = memo((props) => {
         className
     } = props;
 
-    useEffect(() => {
+    const {id} = useParams();
 
-    }, []);
+    const dispatch = useAppDispatch();
+
+    const currentEvent = useSelector(getEventCurrentEventSelector);
+
+    useEffect(() => {
+        if(id){
+            dispatch(fetchGetEventById(id));
+        }
+    }, [dispatch, id]);
 
     return <>
         <AsyncReducersModule reducers={eventReducers}>
             <Page>
                 <div className={classNames(styles.EventPage, className)}>
-                    <EventInfoSection/>
-                    <EventOtherInfoSection className={styles.other_section}/>
+                    <EventInfoSection currentEvent={currentEvent}/>
+                    <EventOtherInfoSection className={styles.other_section} currentEvent={currentEvent}/>
                 </div>
             </Page>
         </AsyncReducersModule>

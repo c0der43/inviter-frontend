@@ -74,7 +74,7 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
                 onUnmount={onUnmount}
                 options={defOptions}>
                 {
-                    choiceLocation && <MarkerF position={choiceLocation}/>
+                   isLoaded && choiceLocation && <MarkerF position={choiceLocation}/>
                 }
             </GoogleMap> : <h1>Loading...</h1>
         }
