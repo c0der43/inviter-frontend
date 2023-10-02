@@ -16,7 +16,7 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = (props) => 
     } = props;
 
     return <>
-        <div className={classNames(styles.EventOtherInfoSection, className)}>
+        <section className={classNames(styles.EventOtherInfoSection, className)}>
             <Card>
                 <AppGoogleMap choiceLocation={{lat:57.30331, lng: 47.88611}}/>
             </Card>
@@ -34,7 +34,7 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = (props) => 
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
                 ]}/>
             </Card>
-        </div>
+        </section>
     </>
 
 }

@@ -6,6 +6,7 @@ import {AxiosInstance} from "axios";
 import {UserSchema} from "@/entities/User";
 import {CreateEventSchema} from "@/features/CreateNewEvent/model/types";
 import {MainPageSchema} from "@/pages/MainPage";
+import {EventPageSchema} from "@/pages/EventPage/model/types/eventPageSchema.ts";
 
 export interface StateSchema {
     ui: UISchema;
@@ -16,6 +17,7 @@ export interface StateSchema {
     createEventForm?: CreateEventSchema;
     commentForm?: CommentFormSchema;
     mainPage?: MainPageSchema;
+    eventPage?: EventPageSchema;
 }
 
 export type ReducerList = {
