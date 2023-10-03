@@ -9,6 +9,7 @@ import {fetchGetNextEventsPage} from "@/pages/MainPage/model/services/fetchGetNe
 import {
     fetchGetEventsWithPagination
 } from "@/pages/MainPage/model/services/fetchGetEvents/fetchGetEventsWithPagination.ts";
+import {PointsViewMap} from "@/pages/MainPage/ui/PointsViewMap/PointsViewMap.tsx";
 
 
 const reducers: ReducerList = {
@@ -30,6 +31,7 @@ const MainPage: FC = memo(() => {
     return <>
         <AsyncReducersModule reducers={reducers} removeAfterUnmount={false}>
             <Page onScrollEnd={onLoadNextPage}>
+                <PointsViewMap/>
                 <EventsList/>
             </Page>
         </AsyncReducersModule>
