@@ -5,7 +5,7 @@ import {Navbar} from "@/widgets/Navbar";
 import {getNavbar, getSidebar} from "@/features/UI";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
-import {initUser} from "@/entities/User";
+import {fetchInitUser} from "@/entities/User";
 
 const App = memo(() => {
 
@@ -15,7 +15,7 @@ const App = memo(() => {
     const showNavbar = useSelector(getNavbar);
 
     useEffect(() => {
-        dispatch(initUser());
+        dispatch(fetchInitUser());
     }, [dispatch]);
 
   return (

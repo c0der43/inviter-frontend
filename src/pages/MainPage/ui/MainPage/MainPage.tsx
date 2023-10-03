@@ -28,7 +28,7 @@ const MainPage: FC = memo(() => {
     }, [dispatch]);
 
     return <>
-        <AsyncReducersModule reducers={reducers}>
+        <AsyncReducersModule reducers={reducers} removeAfterUnmount={false}>
             <Page onScrollEnd={onLoadNextPage}>
                 <EventsList/>
             </Page>

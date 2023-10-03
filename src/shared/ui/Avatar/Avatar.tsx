@@ -2,6 +2,7 @@ import {CSSProperties, FC, memo, ReactNode, useMemo} from "react";
 import classNames from "classnames";
 import styles from './Avatar.module.scss';
 import {AppImage} from "@/shared/ui/Image";
+import {Skeleton} from "@/shared/ui/Skeleton";
 
 type AvatarStyle = 'normal' | 'gradient';
 interface AvatarProps {
@@ -28,7 +29,7 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
         height: size
     }), [size]);
 
-    const fallback = <h1>Loading...</h1>;
+    const fallback = <Skeleton width={size} height={size} borderRadius={'50%'}/>;
     const errorFallback = <h1>ERROR</h1>;
 
     if(children){
@@ -47,4 +48,6 @@ export const Avatar: FC<AvatarProps> = memo((props) => {
         fallback={fallback}
         errorFallback={errorFallback}
     />
+
+    return fallback;
 });

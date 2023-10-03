@@ -1,40 +1,43 @@
-import {FC} from "react";
+import {FC, memo} from "react";
 import {Card} from "@/shared/ui/Card";
 import classNames from "classnames";
 import {TagsView} from "@/shared/ui/TagsView";
 import styles from './EventOtherInfoSection.module.scss';
 import {AvatarGroup} from "@/shared/ui/AvatarGroup";
 import {AppGoogleMap} from "@/shared/ui/AppGoogleMap";
+import {IEvent} from "@/entities/Event";
+import {Text} from "@/shared/ui/Text";
 
 interface EventOtherInfoSectionProps {
     className?: string;
+    currentEvent?: IEvent;
 }
-export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = (props) => {
+export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props) => {
 
     const {
+        currentEvent,
         className
     } = props;
 
     return <>
-        <div className={classNames(styles.EventOtherInfoSection, className)}>
+        <section className={classNames(styles.EventOtherInfoSection, className)}>
             <Card>
-                <AppGoogleMap choiceLocation={{lat:57.30331, lng: 47.88611}}/>
+                {currentEvent != undefined && <AppGoogleMap choiceLocation={{lat:Number(currentEvent?.locationLat), lng: Number(currentEvent?.locationLng)}}/>}
+                <Text size={'m'} text={`${currentEvent?.locationName}`}/>
             </Card>
 
             <Card title={'Теги'}>
-                <TagsView tags={['первый','первый','первый','первый','первый','первый','первый','первый','первый']}/>
+                <TagsView tags={currentEvent?.tags ?? []}/>
             </Card>
 
-            <Card title={'Люди'}>
-                <AvatarGroup urls={[
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQc0slekZ9XFM4E-8HD67qmooXoiryocZW8v4ow6ntCw&s',
-                ]}/>
+            <Card title={'Кураторы'}>
+                <AvatarGroup users={currentEvent?.invitedCurators ?? []}/>
             </Card>
-        </div>
+
+            <Card title={'Посетители'}>
+                <AvatarGroup users={[]}/>
+            </Card>
+        </section>
     </>
 
-}
+});
