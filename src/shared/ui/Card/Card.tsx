@@ -7,17 +7,19 @@ interface CardProps {
     className?: string;
     children?: ReactNode;
     title?: string;
+    dotted?: boolean;
 }
 export const Card: FC<CardProps> = (props) => {
 
     const {
         title,
         children,
-        className
+        className,
+        dotted
     } = props;
 
     return <>
-        <div className={classNames(styles.Card, className)}>
+        <div className={classNames(styles.Card, className, {[styles.dotted]: dotted})}>
             {title && <Text title={title}/>}
             {children}
         </div>

@@ -6,6 +6,7 @@ import styles from './EventOtherInfoSection.module.scss';
 import {AvatarGroup} from "@/shared/ui/AvatarGroup";
 import {AppGoogleMap} from "@/shared/ui/AppGoogleMap";
 import {IEvent} from "@/entities/Event";
+import {Text} from "@/shared/ui/Text";
 
 interface EventOtherInfoSectionProps {
     className?: string;
@@ -22,14 +23,19 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props
         <section className={classNames(styles.EventOtherInfoSection, className)}>
             <Card>
                 {currentEvent != undefined && <AppGoogleMap choiceLocation={{lat:Number(currentEvent?.locationLat), lng: Number(currentEvent?.locationLng)}}/>}
+                <Text size={'m'} text={`${currentEvent?.locationName}`}/>
             </Card>
 
             <Card title={'Теги'}>
                 <TagsView tags={currentEvent?.tags ?? []}/>
             </Card>
 
-            <Card title={'Люди'}>
+            <Card title={'Кураторы'}>
                 <AvatarGroup users={currentEvent?.invitedCurators ?? []}/>
+            </Card>
+
+            <Card title={'Посетители'}>
+                <AvatarGroup users={[]}/>
             </Card>
         </section>
     </>

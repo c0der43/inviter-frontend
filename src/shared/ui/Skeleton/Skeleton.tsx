@@ -4,18 +4,21 @@ import styles from './Skeleton.module.scss';
 interface SkeletonProps {
     height?: number | string;
     width?: number | string;
+    borderRadius?: number | string;
 }
 export const Skeleton: FC<SkeletonProps> = memo((props) => {
 
     const {
+        borderRadius = 8,
         height,
         width
     } = props;
 
     const style: CSSProperties = useMemo(() => ({
-        height: height,
-        width: width
-    }), [height, width]);
+        height,
+        width,
+        borderRadius,
+    }), [borderRadius, height, width]);
 
     return <>
         <div className={styles.Skeleton} style={style}/>

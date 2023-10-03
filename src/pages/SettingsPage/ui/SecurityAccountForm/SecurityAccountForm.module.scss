@@ -1,0 +1,21 @@
+.SecurityAccountForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .inputs_container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .btns_container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .btn{
+      width: fit-content;
+    }
+  }
+}

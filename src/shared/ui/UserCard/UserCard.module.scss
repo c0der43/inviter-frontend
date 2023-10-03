@@ -1,0 +1,10 @@
+.UserCard{
+  width: 30%;
+  align-items: center;
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

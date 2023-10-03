@@ -9,6 +9,7 @@ import {AppLink} from "@/shared/ui/AppLink";
 import {getRouteEventDetails} from "@/shared/const/router.ts";
 import {IEvent} from "@/entities/Event";
 import {TagsView} from "@/shared/ui/TagsView";
+import {Skeleton} from "@/shared/ui/Skeleton";
 
 interface EventItemProps {
     event: IEvent;
@@ -22,7 +23,7 @@ export const EventItem: FC<EventItemProps> = memo((props) => {
     return <>
             <div className={styles.Event}>
                     <AppImage
-                        fallback={<div className={styles.fallback}/>}
+                        fallback={<Skeleton width={'100%'} height={170}/>}
                         className={styles.img}
                         src={`http://localhost:5000/uploads_event/${event.previewFile.fileName}`}
                         //src={'https://planetofhotels.com/guide/sites/default/files/styles/node__blog_post__bp_banner/public/2021-01/Kirkjufell-volcano.jpg'}
