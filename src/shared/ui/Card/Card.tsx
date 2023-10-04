@@ -3,7 +3,7 @@ import styles from './Card.module.scss';
 import classNames from "classnames";
 import {Text} from "@/shared/ui/Text";
 
-interface CardProps {
+interface CardProps{
     className?: string;
     children?: ReactNode;
     title?: string;
@@ -15,7 +15,7 @@ export const Card: FC<CardProps> = (props) => {
         title,
         children,
         className,
-        dotted
+        dotted,
     } = props;
 
     return <>

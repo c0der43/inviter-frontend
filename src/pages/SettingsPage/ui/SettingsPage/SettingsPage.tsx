@@ -1,19 +1,21 @@
 import {FC, memo, useEffect} from "react";
 import {Page} from "@/widgets/Page";
-import {UserCard} from "@/shared/ui/UserCard";
 import styles from './SettingsPage.module.scss';
 import {AsyncReducersModule} from "@/shared/lib/AsyncReducersModule/AsyncReducersModule.tsx";
 import {ReducerList} from "@/app/providers/StoreProvider/config/StateSchema.ts";
 import {SettingsPageReducer} from "@/pages/SettingsPage/model/slices";
-import {SecurityAccountForm} from "@/pages/SettingsPage/ui/SecurityAccountForm/SecurityAccountForm.tsx";
 import {
-    ChangeUserGeneralInformationForm
+    MotionSecurityAccountForm
+} from "@/pages/SettingsPage/ui/SecurityAccountForm/SecurityAccountForm.tsx";
+import {
+    MotionChangeUserGeneralInformationForm
 } from "@/pages/SettingsPage/ui/ChangeUserGeneralInformation/ChangeUserGeneralInformationForm.tsx";
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import {fetchInitUser} from "@/entities/User";
 import {useSelector} from "react-redux";
 import {getLastName} from "@/pages/SettingsPage/model/selectors/MainUserInfoSliceSelector/getLastName/getLastName.ts";
 import {getEmail} from "@/pages/SettingsPage/model/selectors/SecurityPageSliceSelector/getEmail/getEmail.ts";
+import {MotionUserCard} from "@/shared/ui/UserCard/UserCard.tsx";
 
 
 const reducersList: ReducerList = {
@@ -30,23 +32,55 @@ const SettingsPage: FC = memo(() => {
     useEffect(() => {
         dispatch(fetchInitUser());
     }, [dispatch]);
-
     return <>
         <AsyncReducersModule reducers={reducersList}>
             <Page>
                 <div className={styles.SettingsPage}>
                     <div className={styles.header_container}>
-                        <UserCard
+                        <MotionUserCard
+                            initial={{
+                                x: -500,
+                                opacity: 0
+                            }}
+                            animate={{
+                                x: 0,
+                                opacity: 1,
+                            }}
+                            transition={{
+                                delay: 0.5
+                            }}
                             lastName={'xd'}
                             email={email}
                             firstName={firstName}/>
 
-                        <SecurityAccountForm
+                        <MotionSecurityAccountForm
+                            initial={{
+                                x: 500,
+                                opacity: 0
+                            }}
+                            animate={{
+                                x: 0,
+                                opacity: 1,
+                            }}
+                            transition={{
+                                delay: 1
+                            }}
                             email={email}
                             className={styles.security}/>
                     </div>
 
-                    <ChangeUserGeneralInformationForm
+                    <MotionChangeUserGeneralInformationForm
+                        initial={{
+                            y: 500,
+                            opacity: 0
+                        }}
+                        animate={{
+                            y: 0,
+                            opacity: 1,
+                        }}
+                        transition={{
+                            delay: 1.5
+                        }}
                         firstName={firstName}
                         className={styles.user_data}/>
                 </div>

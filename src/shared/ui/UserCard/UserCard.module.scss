@@ -1,6 +1,11 @@
-.UserCard{
+.container{
   width: 30%;
-  align-items: center;
+
+  .card{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
 
   .info{
     display: flex;
