@@ -4,7 +4,6 @@ import {Avatar} from "@/shared/ui/Avatar";
 import {Text} from "@/shared/ui/Text";
 import styles from './UserCard.module.scss';
 import {motion} from "framer-motion";
-import {Input} from "@/shared/ui/Input";
 
 interface UserCardProps {
     firstName?: string;

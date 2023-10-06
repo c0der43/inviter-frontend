@@ -55,6 +55,7 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyCUxV7Ub2kp327zmvaOAqgp2OYaDcmhZi4",
         libraries: ['places'],
+        mapIds: ['5d19bb324d51c37f']
     });
 
     const onLoad = useCallback((map: google.maps.Map) => {

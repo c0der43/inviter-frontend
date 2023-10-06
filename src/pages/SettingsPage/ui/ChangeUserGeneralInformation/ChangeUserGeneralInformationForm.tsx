@@ -27,7 +27,7 @@ export const ChangeUserGeneralInformationForm: FC<ChangeUserGeneralInformation> 
     } ,[dispatch]);
 
     return <>
-        <div ref={ref as ForwardedRef<HTMLDivElement>}>
+        <div ref={ref as ForwardedRef<HTMLDivElement>} style={{zIndex:'2'}}>
             <Card dotted className={classNames(styles.Container, className)} title={'Главная информация'}>
                 <div className={styles.input_container}>
                     <Input label={'Имя'} size={'l'} value={firstName} onChange={onChangeLastName}/>

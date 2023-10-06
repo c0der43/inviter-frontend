@@ -3,7 +3,9 @@
   flex-grow: 1;
   //height: calc(100vh - var(--havbar-height));
   height: 100vh;
+  position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
   //background-color: white;
 
   .content_container{
@@ -14,5 +16,12 @@
     //background-color: #000814;
     height: 10px;
     margin-bottom: 10px;
+  }
+
+  .bg_img{
+    z-index: 0;
+    width: 100%;
+    scale: 1.2;
+    position: absolute;
   }
 }

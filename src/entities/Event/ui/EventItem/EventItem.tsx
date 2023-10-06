@@ -13,6 +13,7 @@ import {Skeleton} from "@/shared/ui/Skeleton";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import {motion} from 'framer-motion';
+import {useNavigate} from "react-router-dom";
 
 
 export type EventView = 'CARD' | 'STRIPS';
@@ -23,6 +24,8 @@ interface EventItemProps {
 }
 export const EventItem: FC<EventItemProps> = memo((props) => {
 
+    const navigate = useNavigate();
+
     const {
         view,
         event
@@ -31,6 +34,7 @@ export const EventItem: FC<EventItemProps> = memo((props) => {
     if(view === 'STRIPS'){
         return <>
                 <motion.div
+                    onClick={() => navigate(getRouteEventDetails(event.id.toString()))}
                     whileHover={{ scale: 1.02, rotate: 0 }}
                     className={styles.strips}>
                     <AppImage
