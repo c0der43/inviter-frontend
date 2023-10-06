@@ -1,7 +1,7 @@
 import {FC, MutableRefObject, ReactNode, useRef} from "react";
 import styles from './Page.module.scss';
 import classNames from "classnames";
-import {PageHeader} from "../PageHeader/PageHeader.tsx";
+// import {PageHeader} from "../PageHeader/PageHeader.tsx";
 import {useInfiniteScroll} from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll.ts";
 
 
@@ -29,7 +29,7 @@ export const Page: FC<PageProps> = (props) => {
 
     return <main ref={wrapperRef}
         className={classNames(styles.Page, className)}>
-        <PageHeader/>
+        {/*<PageHeader/>*/}
         <div className={styles.content_container}>
             {children}
         </div>

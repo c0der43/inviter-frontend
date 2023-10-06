@@ -1,7 +1,8 @@
 .Page{
   padding: 15px var(--padding-x);
   flex-grow: 1;
-  height: calc(100vh - var(--havbar-height));
+  //height: calc(100vh - var(--havbar-height));
+  height: 100vh;
   overflow-y: auto;
   //background-color: white;
 

@@ -19,12 +19,6 @@ const defOptions = {
     fullscreenControl: false
 }
 
-const containerStyle = {
-    width: '100%',
-    height: '100%',
-    borderRadius: '8px'
-};
-
 const center = {
     lat: -3.745,
     lng: -38.523
@@ -34,10 +28,14 @@ interface AppGoogleMapProps {
     className?: string;
     choiceLocation?: Coordinates;
     eventsData?: IEvent[];
+    zoom?: number;
+    borderRadius?: number;
 }
 export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
 
     const {
+        borderRadius = 8,
+        zoom = 5,
         eventsData,
         choiceLocation,
         className
@@ -70,9 +68,13 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
     return <div className={classNames(className, styles.AppGoogleMap)}>
         {
             isLoaded ? <GoogleMap
-                mapContainerStyle={containerStyle}
+                mapContainerStyle={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: `${borderRadius}px`
+                }}
                 center={choiceLocation != undefined ? choiceLocation:  center}
-                zoom={5}
+                zoom={zoom}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 options={defOptions}>

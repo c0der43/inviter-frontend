@@ -10,6 +10,13 @@ import {
     fetchGetEventsWithPagination
 } from "@/pages/MainPage/model/services/fetchGetEvents/fetchGetEventsWithPagination.ts";
 import {PointsViewMap} from "@/pages/MainPage/ui/PointsViewMap/PointsViewMap.tsx";
+import {MainPageFilters} from "@/pages/MainPage/ui/MainPageFilters/MainPageFilters.tsx";
+import styles from './MainPage.module.scss';
+import {uiActions} from "@/features/UI";
+import {useSelector} from "react-redux";
+import {
+    getMainViewSelector
+} from "@/pages/MainPage/model/selectors/mainPageSelectors/getMainViewSelector/getMainViewSelector.ts";
 
 
 const reducers: ReducerList = {
@@ -20,8 +27,15 @@ const MainPage: FC = memo(() => {
 
     const dispatch = useAppDispatch();
 
+    const view = useSelector(getMainViewSelector);
+
     useEffect(() => {
-        dispatch(fetchGetEventsWithPagination())
+        dispatch(uiActions.setVisibleNavbar(false));
+        dispatch(fetchGetEventsWithPagination());
+
+        return () => {
+            dispatch(uiActions.setVisibleNavbar(true));
+        }
     }, [dispatch]);
 
     const onLoadNextPage = useCallback(() => {
@@ -31,8 +45,16 @@ const MainPage: FC = memo(() => {
     return <>
         <AsyncReducersModule reducers={reducers} removeAfterUnmount={false}>
             <Page onScrollEnd={onLoadNextPage}>
-                <PointsViewMap/>
-                <EventsList/>
+                <div className={styles.MainPage}>
+                    <div className={styles.filters_and_results}>
+                        <MainPageFilters className={styles.filters}/>
+                        <EventsList classNames={styles.items} view={view}/>
+                    </div>
+
+                    <div className={styles.map_container}>
+                        <PointsViewMap className={styles.map}/>
+                    </div>
+                </div>
             </Page>
         </AsyncReducersModule>
     </>

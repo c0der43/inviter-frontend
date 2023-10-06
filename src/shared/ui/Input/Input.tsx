@@ -3,12 +3,15 @@ import classNames from "classnames";
 import styles from './Input.module.scss';
 import {Text} from "@/shared/ui/Text";
 import {Button} from "@/shared/ui/Button";
+import { AiOutlineSearch } from "react-icons/ai";
 
 
 type InputSize = 's' | 'm' | 'l';
 type ReqInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'size'>;
+type BtnDesign = 'outline' | 'solid';
 
 interface InputProps extends ReqInputProps {
+    design?: BtnDesign;
     className?: string;
     value?: string | number;
     size?: InputSize;
@@ -16,10 +19,13 @@ interface InputProps extends ReqInputProps {
     label?: string;
     btnName?: string;
     onClick?: () => void;
+    search?: boolean;
 }
 export const Input: FC<InputProps> = memo((props) => {
 
     const {
+        design = 'outline',
+        search,
         onClick,
         btnName,
         label,
@@ -45,7 +51,8 @@ export const Input: FC<InputProps> = memo((props) => {
         onChange?.(e.target.value);
     }
 
-    const input = <div className={classNames(styles.InputWrapper, styles[size], {[styles.onFocus]: isFocused}, className)}>
+    const input = <div className={classNames(styles.InputWrapper,styles[design], styles[size], {[styles.onFocus]: isFocused}, className)}>
+        {search && <AiOutlineSearch/>}
         <input
             //ref={inputRef}
             className={styles.Input}

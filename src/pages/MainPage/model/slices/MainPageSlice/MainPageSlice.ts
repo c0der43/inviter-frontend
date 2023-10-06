@@ -1,8 +1,9 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IEvent} from "@/entities/Event";
+import {EventView, IEvent} from "@/entities/Event";
 import {MainPageSchema} from "@/pages/MainPage";
 import {fetchGetEventsWithPagination} from "@/pages/MainPage/model/services/fetchGetEvents/fetchGetEventsWithPagination.ts";
 import {StateSchema} from "@/app/providers/StoreProvider";
+
 
 const mainPageAdapter = createEntityAdapter<IEvent>({
     selectId: (event) => event.id
@@ -20,11 +21,19 @@ export const mainPageSlice = createSlice({
         entities: {},
         page: 1,
         limit: 3,
-        hasMore: true
+        hasMore: true,
+        search: '',
+        view: 'STRIPS',
     }),
     reducers: {
         updatePage: (state) => {
             state.page += 1;
+        },
+        setSearch: (state, {payload}: PayloadAction<string>) => {
+            state.search = payload;
+        },
+        setView: (state, {payload}: PayloadAction<EventView>) => {
+            state.view = payload;
         }
     },
     extraReducers: (builder) => {
