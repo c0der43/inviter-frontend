@@ -26,7 +26,7 @@ export const fetchGetNextEventsPage = createAsyncThunk<void, void, ThunkConfig<s
 
         if(hasMore && !isLoading) {
             dispatch(mainPageActions.updatePage());
-            dispatch(fetchGetEventsWithPagination());
+            dispatch(fetchGetEventsWithPagination({}));
         }
     }
 );

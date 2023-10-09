@@ -8,5 +8,12 @@
     padding: 5px 10px;
     font-size: 13px;
     border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 300ms;
+
+    &:hover{
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
   }
 }

@@ -1,8 +1,9 @@
 import {FC, memo, useCallback, useEffect, useRef} from "react";
-import {GoogleMap, MarkerF, useJsApiLoader} from "@react-google-maps/api";
+import {GoogleMap, Marker, MarkerF, useJsApiLoader} from "@react-google-maps/api";
 import classNames from "classnames";
 import styles from './AppGoogleMap.module.scss';
 import {Coordinates} from "@/shared/types/coordinates.ts";
+import {IEvent} from "@/entities/Event";
 
 
 const defOptions = {
@@ -15,14 +16,9 @@ const defOptions = {
     keyboardShortcuts: false,
     scrollwheel: false,
     disableDoubleClickZoom: false,
-    fullscreenControl: false
+    fullscreenControl: false,
+    mapId: '5d19bb324d51c37f'
 }
-
-const containerStyle = {
-    width: '100%',
-    height: '100%',
-    borderRadius: '8px'
-};
 
 const center = {
     lat: -3.745,
@@ -32,10 +28,16 @@ const center = {
 interface AppGoogleMapProps {
     className?: string;
     choiceLocation?: Coordinates;
+    eventsData?: IEvent[];
+    zoom?: number;
+    borderRadius?: number;
 }
 export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
 
     const {
+        borderRadius = 8,
+        zoom = 5,
+        eventsData,
         choiceLocation,
         className
     } = props;
@@ -54,6 +56,7 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyCUxV7Ub2kp327zmvaOAqgp2OYaDcmhZi4",
         libraries: ['places'],
+        mapIds: ['5d19bb324d51c37f']
     });
 
     const onLoad = useCallback((map: google.maps.Map) => {
@@ -67,14 +70,22 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
     return <div className={classNames(className, styles.AppGoogleMap)}>
         {
             isLoaded ? <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
+                mapContainerStyle={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: `${borderRadius}px`
+                }}
+                center={choiceLocation != undefined ? choiceLocation:  center}
+                zoom={zoom}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 options={defOptions}>
                 {
                    isLoaded && choiceLocation && <MarkerF position={choiceLocation}/>
+                }
+                {
+                    eventsData?.map((item) =>
+                        <Marker key={item.id} position={{lat: +item.locationLat, lng: +item.locationLng}}/>)
                 }
             </GoogleMap> : <h1>Loading...</h1>
         }

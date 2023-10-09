@@ -1,5 +1,13 @@
 .EventList {
+  padding-bottom: 15px;
+}
+.CARD {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+.STRIPS {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }

@@ -4,6 +4,7 @@ import {uiReducer} from "@/features/UI";
 import {createReducerManager} from "@/app/providers/StoreProvider/config/reducerManager.ts";
 import {$api} from "@/shared/api/api.ts";
 import {userReducer} from "@/entities/User/model/slice/userSlice.ts";
+import {rtkApi} from "@/shared/api/rtkApi.ts";
 
 export function createAppStore(
 ){
@@ -11,6 +12,7 @@ export function createAppStore(
     const reducers: ReducersMapObject<StateSchema> = {
         ui: uiReducer,
         me: userReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const extraArg: ThunkExtraArg = {
@@ -26,7 +28,7 @@ export function createAppStore(
             thunk: {
                 extraArgument: extraArg,
             }
-        })
+        }).concat(rtkApi.middleware)
     });
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -1,12 +1,11 @@
 .InputWrapper {
   width: 100%;
   //background: var(--input-bg-color);
-  border: 2px solid black;
-  border-radius: 10px;
   padding: 8px 16px;
   display: flex;
   align-items: center;
   transition-duration: 200ms;
+  gap: 15px;
 }
 
 .Input{
@@ -45,4 +44,18 @@
 
 .onFocus{
   border: 2px solid blue;
+}
+
+.outline{
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.solid{
+  background-color: var(--gray);
+  border-radius: 8px;
+
+  &.onFocus{
+    border: none;
+  }
 }

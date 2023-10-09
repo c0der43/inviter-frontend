@@ -1,0 +1,30 @@
+.MainPageFilters{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .filter_item{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .picker{
+    width: fit-content;
+  }
+
+  .date_and_type_views{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn{
+      width: fit-content;
+    }
+
+    .view{
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+  }
+}

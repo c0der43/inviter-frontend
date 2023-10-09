@@ -7,14 +7,17 @@ import {AvatarGroup} from "@/shared/ui/AvatarGroup";
 import {AppGoogleMap} from "@/shared/ui/AppGoogleMap";
 import {IEvent} from "@/entities/Event";
 import {Text} from "@/shared/ui/Text";
+import {Button} from "@/shared/ui/Button";
 
 interface EventOtherInfoSectionProps {
     className?: string;
     currentEvent?: IEvent;
+    clickJoinToEvent?: () => void;
 }
 export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props) => {
 
     const {
+        clickJoinToEvent,
         currentEvent,
         className
     } = props;
@@ -37,6 +40,8 @@ export const EventOtherInfoSection: FC<EventOtherInfoSectionProps> = memo((props
             <Card title={'Посетители'}>
                 <AvatarGroup users={[]}/>
             </Card>
+
+            <Button onClick={clickJoinToEvent}>Присоедениться</Button>
         </section>
     </>
 

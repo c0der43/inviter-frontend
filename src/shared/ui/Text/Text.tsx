@@ -1,4 +1,4 @@
-import {FC, memo} from "react";
+import {FC, memo, ReactElement} from "react";
 import styles from './Text.module.scss';
 import classNames from "classnames";
 
@@ -31,10 +31,12 @@ interface TextProps {
     align?: TextAlign;
     size?: TextSize;
     bold?: boolean;
+    icon?: ReactElement;
 }
 export const Text: FC<TextProps> = memo((props) => {
 
     const {
+        icon,
         className,
         text,
         title,
@@ -52,19 +54,24 @@ export const Text: FC<TextProps> = memo((props) => {
     return (
         <div className={classNames(additionalClasses, {[styles.bold]: bold})}>
             {
-                title && (
-                    <HeaderTag className={styles.title}>
+                title && <HeaderTag className={styles.title}>
                         {title}
                     </HeaderTag>
-                )
 
             }
             {
-                text && (
+                text && !icon && <p className={styles.text}>
+                        {text}
+                    </p>
+
+            }
+            {
+                icon && text && <div style={{display:'flex', alignItems:'center', gap:'5px'}}>
+                    {icon}
                     <p className={styles.text}>
                         {text}
                     </p>
-                )
+                </div>
             }
         </div>
     );

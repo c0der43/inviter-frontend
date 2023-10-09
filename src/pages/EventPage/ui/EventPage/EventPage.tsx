@@ -1,4 +1,4 @@
-import {FC, memo, useEffect} from "react";
+import {FC, memo, useCallback, useEffect} from "react";
 import {Page} from "@/widgets/Page";
 import styles from './EventPage.module.scss';
 import classNames from "classnames";
@@ -14,6 +14,7 @@ import {useSelector} from "react-redux";
 import {
     getEventCurrentEventSelector
 } from "@/pages/EventPage/model/selectors/getEventCurrentEventSelector/getEventCurrentEventSelector.ts";
+import {fetchJoinEventById} from "@/pages/EventPage/model/services/fetchJoinEvent/fetchJoinEventById.ts";
 
 interface EventPageProps {
     className?: string;
@@ -35,6 +36,10 @@ const EventPage: FC<EventPageProps> = memo((props) => {
 
     const currentEvent = useSelector(getEventCurrentEventSelector);
 
+    const clickJoinToEvent = useCallback(() => {
+        dispatch(fetchJoinEventById(id!));
+    }, [dispatch, id]);
+
     useEffect(() => {
         if(id){
             dispatch(fetchGetEventById(id));
@@ -47,6 +52,7 @@ const EventPage: FC<EventPageProps> = memo((props) => {
                 <div className={classNames(styles.EventPage, className)}>
                     <EventInfoSection currentEvent={currentEvent}/>
                     <EventOtherInfoSection
+                        clickJoinToEvent={clickJoinToEvent}
                         className={styles.other_section}
                         currentEvent={currentEvent}/>
                 </div>

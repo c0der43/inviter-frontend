@@ -1,4 +1,4 @@
-import {FC, memo, useCallback} from "react";
+import {FC, forwardRef, LegacyRef, memo, useCallback} from "react";
 import {Card} from "@/shared/ui/Card";
 import styles from './SecurityAccountForm.module.scss';
 import classNames from "classnames";
@@ -6,6 +6,7 @@ import {Input} from "@/shared/ui/Input";
 import {Button} from "@/shared/ui/Button";
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import {securityDataActions} from "@/pages/SettingsPage/model/slices/SecurityPageSlice/securityPageSlice.ts";
+import {motion} from "framer-motion";
 
 interface SecurityAccountFormProps {
     className?: string;
@@ -14,7 +15,7 @@ interface SecurityAccountFormProps {
     confirmPassword?: string;
 }
 
-export const SecurityAccountForm: FC<SecurityAccountFormProps> = memo((props) => {
+export const SecurityAccountForm: FC<SecurityAccountFormProps> = memo(forwardRef((props, ref) => {
 
     const {
         email,
@@ -39,18 +40,22 @@ export const SecurityAccountForm: FC<SecurityAccountFormProps> = memo((props) =>
     }, [dispatch]);
 
     return <>
-        <Card title={'Безопасность'} dotted className={classNames(styles.SecurityAccountForm, className)}>
-            <div className={styles.inputs_container}>
-                <Input label={'Почта'} size={'l'} onChange={onChangeEmail} value={email}/>
-                <Input label={'Пароль'} size={'l'} onChange={onChangePassword}/>
-                <Input label={'Повторите пароль'} size={'l'} onChange={onChangeConfirmPassword}/>
-            </div>
+        <div ref={ref as LegacyRef<HTMLDivElement>} className={styles.container}>
+            <Card title={'Безопасность'} dotted className={classNames(styles.SecurityAccountForm, className)}>
+                <div className={styles.inputs_container}>
+                    <Input label={'Почта'} size={'l'} onChange={onChangeEmail} value={email}/>
+                    <Input label={'Пароль'} size={'l'} onChange={onChangePassword}/>
+                    <Input label={'Повторите пароль'} size={'l'} onChange={onChangeConfirmPassword}/>
+                </div>
 
-            <div className={styles.btns_container}>
-                <Button className={styles.btn}>Сменить почту</Button>
-                <Button className={styles.btn}>Сменить пароль</Button>
-            </div>
-        </Card>
+                <div className={styles.btns_container}>
+                    <Button className={styles.btn}>Сменить почту</Button>
+                    <Button className={styles.btn}>Сменить пароль</Button>
+                </div>
+            </Card>
+        </div>
     </>
 
-});
+}));
+
+export const MotionSecurityAccountForm = motion(SecurityAccountForm);
