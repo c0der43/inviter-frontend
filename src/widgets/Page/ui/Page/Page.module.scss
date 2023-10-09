@@ -4,22 +4,25 @@
   //height: calc(100vh - var(--havbar-height));
   height: 100vh;
   position: relative;
-  overflow-y: auto;
+  //overflow-y: hidden;
   overflow-x: hidden;
   //background-color: white;
 
   .content_container{
+    height: fit-content;
     //background-color: #FFA1F5;
   }
 
   .trigger{
-    //background-color: #000814;
+    //background-color: #006bff;
     height: 10px;
     margin-bottom: 10px;
   }
 
   .bg_img{
+    content: '';
     z-index: 0;
+    bottom: 0;
     width: 100%;
     scale: 1.2;
     position: absolute;

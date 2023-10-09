@@ -1,6 +1,5 @@
 import {FC, memo} from "react";
 import {Input} from "@/shared/ui/Input";
-import {Text} from "@/shared/ui/Text";
 import classNames from "classnames";
 import styles from './MainPageFilters.module.scss';
 import {Button} from "@/shared/ui/Button";
@@ -27,8 +26,6 @@ export const MainPageFilters: FC<MainPageFiltersProps> = memo((props) => {
 
     return <>
         <div className={classNames(styles.MainPageFilters,className)}>
-            <Text title={'GG ивентов по миру'} bold size={'l'}/>
-
             <div className={styles.filter_item}>
                 <AppDatePicker className={styles.picker} placeholder={'Дата ивента'}/>
             </div>

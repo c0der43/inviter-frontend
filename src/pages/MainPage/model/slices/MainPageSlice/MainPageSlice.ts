@@ -40,10 +40,19 @@ export const mainPageSlice = createSlice({
         builder.addCase(fetchGetEventsWithPagination.pending, (state) => {
           state.isLoading = true;
         })
-        builder.addCase(fetchGetEventsWithPagination.fulfilled, (state, {payload}: PayloadAction<IEvent[]>) => {
+        builder.addCase(fetchGetEventsWithPagination.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.hasMore = payload.length >= state.limit;
-            mainPageAdapter.addMany(state, payload);
+            state.hasMore = action.payload.length >= state.limit;
+
+            console.log(action.meta.arg.replace);
+
+            if(action.meta.arg.replace){
+                mainPageAdapter.setAll(state, action.payload);
+                state.hasMore = true;
+                state.page = 1;
+            }else{
+                mainPageAdapter.addMany(state, action.payload);
+            }
         })
         builder.addCase(fetchGetEventsWithPagination.rejected, (state) => {
             state.isLoading = false;

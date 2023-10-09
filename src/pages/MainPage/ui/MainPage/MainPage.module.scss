@@ -1,11 +1,14 @@
 .MainPage{
   display: flex;
-  height: 100vh;
   gap: 25px;
+  justify-content: space-between;
+
+  .tags_container{
+    margin-top: 15px;
+  }
 
   .filters_and_results {
-    max-width: 60%;
-    z-index: 2;
+    width: 60%;
 
     .items{
       margin-top: 25px;
@@ -13,12 +16,10 @@
   }
 
   .map_container{
-    width: 30%;
-    top: 0;
-    right: 0;
+    width: 35%;
     height: 100vh;
-    margin-right: 17px;
-    position: absolute;
+    position: sticky;
+    top: 0;
 
     .map{
       width: 100%;

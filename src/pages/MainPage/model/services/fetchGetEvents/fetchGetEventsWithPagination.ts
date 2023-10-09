@@ -7,8 +7,14 @@ import {
 import {
     getMainLimitSelector
 } from "@/pages/MainPage/model/selectors/mainPageSelectors/getMainLimitSelector/getMainLimitSelector.ts";
+import {
+    getMainSearchSelector
+} from "@/pages/MainPage/model/selectors/mainPageSelectors/getMainSearchSelector/getMainSearchSelector.ts";
 
-export const fetchGetEventsWithPagination = createAsyncThunk<IEvent[], void, ThunkConfig<string>>(
+interface FetchGetEventsWithPaginationProps {
+    replace?: boolean;
+}
+export const fetchGetEventsWithPagination = createAsyncThunk<IEvent[], FetchGetEventsWithPaginationProps, ThunkConfig<string>>(
     'main/fetchGetEvents',
     async (_, thunkAPI) => {
 
@@ -20,9 +26,10 @@ export const fetchGetEventsWithPagination = createAsyncThunk<IEvent[], void, Thu
 
         const page = getMainPageSelector(getState());
         const limit = getMainLimitSelector(getState());
+        const search = getMainSearchSelector(getState());
 
         try {
-            const {data} = await extra.api.get(`/event/pagination?page=${page}&limit=${limit}`);
+            const {data} = await extra.api.get(`/event/pagination?page=${page}&limit=${limit}&name=${search}`);
             return data;
         }catch (e){
             console.log(e);

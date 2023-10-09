@@ -13,7 +13,7 @@ export const fetchJoinEventById = createAsyncThunk<void, string, ThunkConfig<str
         } = thunkAPI;
 
         try {
-            await extra.api.post(`/event/join/${eventId}`);
+            await extra.api.post(`/event_transaction/join/${eventId}`);
             dispatch(fetchGetEventById(eventId));
         }catch (e){
             return rejectWithValue('error');

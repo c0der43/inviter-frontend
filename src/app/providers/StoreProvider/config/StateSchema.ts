@@ -8,10 +8,12 @@ import {CreateEventSchema} from "@/features/CreateNewEvent/model/types";
 import {MainPageSchema} from "@/pages/MainPage";
 import {EventPageSchema} from "@/pages/EventPage/model/types/eventPageSchema.ts";
 import {SettingsPageSchema} from "@/pages/SettingsPage/model/types/SettingsPageSchema.ts";
+import {rtkApi} from "@/shared/api/rtkApi.ts";
 
 export interface StateSchema {
     ui: UISchema;
     me: UserSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     loginForm?: LoginSchema;
     createEventForm?: CreateEventSchema;

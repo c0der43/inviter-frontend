@@ -16,7 +16,8 @@ const defOptions = {
     keyboardShortcuts: false,
     scrollwheel: false,
     disableDoubleClickZoom: false,
-    fullscreenControl: false
+    fullscreenControl: false,
+    mapId: '5d19bb324d51c37f'
 }
 
 const center = {
@@ -84,7 +85,7 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
                 }
                 {
                     eventsData?.map((item) =>
-                        <Marker position={{lat: +item.locationLat, lng: +item.locationLng}}/>)
+                        <Marker key={item.id} position={{lat: +item.locationLat, lng: +item.locationLng}}/>)
                 }
             </GoogleMap> : <h1>Loading...</h1>
         }

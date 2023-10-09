@@ -39,11 +39,11 @@ export const EventItem: FC<EventItemProps> = memo((props) => {
                     className={styles.strips}>
                     <AppImage
                         className={styles.preview}
-                        src={`http://localhost:5000/uploads_event/${event.previewFile.fileName}`}/>
+                        src={`http://localhost:5000/uploads_event/${event?.previewFile?.fileName}`}/>
 
                     <div className={styles.info_container}>
                         <Text size={'l'} text={event.name} bold/>
-                        <Text size={'m'} text={event.desc}/>
+                        <Text size={'m'} text={event.desc} className={styles.desc}/>
 
                         <div className={styles.other_section}>
                             <div className={styles.left_section}>

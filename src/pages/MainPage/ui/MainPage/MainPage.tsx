@@ -17,6 +17,9 @@ import {useSelector} from "react-redux";
 import {
     getMainViewSelector
 } from "@/pages/MainPage/model/selectors/mainPageSelectors/getMainViewSelector/getMainViewSelector.ts";
+import {Text} from "@/shared/ui/Text";
+import {useGetAllTagsQuery} from "@/entities/Tag/api/fetchTagApi.ts";
+import {TagsView} from "@/shared/ui/TagsView";
 
 
 const reducers: ReducerList = {
@@ -29,9 +32,16 @@ const MainPage: FC = memo(() => {
 
     const view = useSelector(getMainViewSelector);
 
+    const {
+        isLoading,
+        data: tags,
+        error
+    } = useGetAllTagsQuery();
+
+
     useEffect(() => {
         dispatch(uiActions.setVisibleNavbar(false));
-        dispatch(fetchGetEventsWithPagination());
+        dispatch(fetchGetEventsWithPagination({}));
 
         return () => {
             dispatch(uiActions.setVisibleNavbar(true));
@@ -47,18 +57,24 @@ const MainPage: FC = memo(() => {
             <Page onScrollEnd={onLoadNextPage}>
                 <div className={styles.MainPage}>
                     <div className={styles.filters_and_results}>
+
+                        <div style={{display:'flex', alignItems: 'center'}}>
+                            <Text title={'GG ивентов по миру!'} bold size={'l'}/>
+                        </div>
+
                         <MainPageFilters className={styles.filters}/>
+                        <TagsView tags={tags ?? []} className={styles.tags_container}/>
                         <EventsList classNames={styles.items} view={view}/>
                     </div>
 
                     <div className={styles.map_container}>
-                        <PointsViewMap className={styles.map}/>
+                        <PointsViewMap
+                            className={styles.map}/>
                     </div>
                 </div>
             </Page>
         </AsyncReducersModule>
     </>
-
 });
 
 export default MainPage;
