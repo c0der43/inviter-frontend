@@ -1,6 +1,6 @@
 import {User, UserSchema} from "../types/user.ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {initUser} from "@/entities/User";
+import {fetchInitUser} from "@/entities/User";
 
 const initialState: UserSchema = {
     init: false,
@@ -11,7 +11,7 @@ export const userSlice = createSlice({
    initialState,
    reducers: {},
    extraReducers: (builder) => {
-       builder.addCase(initUser.fulfilled, (state, {payload}: PayloadAction<User>) => {
+       builder.addCase(fetchInitUser.fulfilled, (state, {payload}: PayloadAction<User>) => {
            state.authData = payload;
            state.init = true;
        })

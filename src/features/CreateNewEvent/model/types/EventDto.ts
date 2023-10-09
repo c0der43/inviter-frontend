@@ -7,5 +7,6 @@ export interface EventDto {
     locationName: string,
     locationLat: string,
     locationLng: string,
-    tags: number[]
+    tags: number[],
+    invitedCurators: number[]
 }

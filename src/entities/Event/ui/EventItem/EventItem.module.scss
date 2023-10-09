@@ -1,12 +1,12 @@
 .Event {
   background-color: #000814;
-  width: fit-content;
-  max-width: 350px;
+  width: 350px;
   padding: 10px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: fit-content;
   overflow: hidden;
   cursor: pointer;
 
@@ -59,6 +59,7 @@
     .avatar_group {
       width: fit-content;
       margin-left: auto;
+      z-index: 0;
     }
   }
 }

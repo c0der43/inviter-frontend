@@ -10,10 +10,12 @@ import {useDispatch, useStore} from "react-redux";
 interface AsyncReducersModule {
     reducers: ReducerList,
     children?: ReactNode;
+    removeAfterUnmount?: boolean;
 }
 export const AsyncReducersModule: FC<AsyncReducersModule> = (props) => {
 
     const {
+        removeAfterUnmount = true,
         reducers,
         children
     } = props;
@@ -28,12 +30,14 @@ export const AsyncReducersModule: FC<AsyncReducersModule> = (props) => {
         });
 
         return () => {
-            Object.entries(reducers).forEach(([name]) => {
-                store.reducerManager.remove(name as StateSchemaKey);
-                dispatch({type: `@DESTROY ${name} reducer`});
-            });
+            if(removeAfterUnmount) {
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as StateSchemaKey);
+                    dispatch({type: `@DESTROY ${name} reducer`});
+                });
+            }
         };
-    },[dispatch, reducers, store.reducerManager]);
+    },[removeAfterUnmount, dispatch, reducers, store.reducerManager]);
 
     return <>{children}</>
 }

@@ -1,0 +1,19 @@
+.SettingsPage{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.header_container{
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+
+.user_data {
+}
+
+.security {
+  width: 50%;
+}

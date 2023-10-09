@@ -28,10 +28,16 @@ export const mainPageSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        builder.addCase(fetchGetEventsWithPagination.pending, (state) => {
+          state.isLoading = true;
+        })
         builder.addCase(fetchGetEventsWithPagination.fulfilled, (state, {payload}: PayloadAction<IEvent[]>) => {
             state.isLoading = false;
             state.hasMore = payload.length >= state.limit;
             mainPageAdapter.addMany(state, payload);
+        })
+        builder.addCase(fetchGetEventsWithPagination.rejected, (state) => {
+            state.isLoading = false;
         })
     }
 });

@@ -6,6 +6,7 @@ import {
 } from "@/features/CreateNewEvent/model/selectors/createEventSelectors/getEventFields/getEventFields.ts";
 import {isAxiosError} from "axios";
 import {getSelectedTags} from "@/features/CreateNewEvent/model/slices/tagsEventSlice/tagsEventSlice.ts";
+import {curatorsSelector} from "@/features/CreateNewEvent/model/slices/curatorsEventSlice/curatorsEventSlice.ts";
 
 export const fetchSaveEvent = createAsyncThunk<void, File | undefined, ThunkConfig<unknown>>(
     'createEvent/save',
@@ -18,7 +19,8 @@ export const fetchSaveEvent = createAsyncThunk<void, File | undefined, ThunkConf
         } = thunkAPI;
 
         const values = getEventFields(getState());
-        const tagIds = getSelectedTags.selectIds(getState()) as Array<number>;
+        const tagIds = getSelectedTags.selectIds(getState()) as number[];
+        const curatorsIds = curatorsSelector.selectIds(getState()) as number[];
 
         const dto: EventDto = {
             name: values?.eventName ?? '',
@@ -29,7 +31,8 @@ export const fetchSaveEvent = createAsyncThunk<void, File | undefined, ThunkConf
             locationName: values?.eventLocationName ?? '',
             locationLat: values?.eventChoiceLocation.lat.toString() ?? '',
             locationLng: values?.eventChoiceLocation.lng.toString() ?? '',
-            tags: tagIds
+            tags: tagIds,
+            invitedCurators: curatorsIds
         }
 
         const formData = new FormData();

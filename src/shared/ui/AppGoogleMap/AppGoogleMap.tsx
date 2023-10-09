@@ -1,8 +1,9 @@
 import {FC, memo, useCallback, useEffect, useRef} from "react";
-import {GoogleMap, MarkerF, useJsApiLoader} from "@react-google-maps/api";
+import {GoogleMap, Marker, MarkerF, useJsApiLoader} from "@react-google-maps/api";
 import classNames from "classnames";
 import styles from './AppGoogleMap.module.scss';
 import {Coordinates} from "@/shared/types/coordinates.ts";
+import {IEvent} from "@/entities/Event";
 
 
 const defOptions = {
@@ -32,10 +33,12 @@ const center = {
 interface AppGoogleMapProps {
     className?: string;
     choiceLocation?: Coordinates;
+    eventsData?: IEvent[];
 }
 export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
 
     const {
+        eventsData,
         choiceLocation,
         className
     } = props;
@@ -68,13 +71,17 @@ export const AppGoogleMap: FC<AppGoogleMapProps> = memo((props) => {
         {
             isLoaded ? <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
+                center={choiceLocation != undefined ? choiceLocation:  center}
+                zoom={5}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 options={defOptions}>
                 {
-                    choiceLocation && <MarkerF position={choiceLocation}/>
+                   isLoaded && choiceLocation && <MarkerF position={choiceLocation}/>
+                }
+                {
+                    eventsData?.map((item) =>
+                        <Marker position={{lat: +item.locationLat, lng: +item.locationLng}}/>)
                 }
             </GoogleMap> : <h1>Loading...</h1>
         }

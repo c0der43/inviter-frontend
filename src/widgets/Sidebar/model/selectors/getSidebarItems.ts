@@ -1,5 +1,5 @@
 import {SidebarItemType} from '../types/SidebarItemType.ts';
-import {getRouteLogin, getRouteMain, getRouteMyEvents} from "@/shared/const/router.ts";
+import {getRouteLogin, getRouteMain, getRouteMyEvents, getRouteSettings} from "@/shared/const/router.ts";
 
 export const getSidebarItems = () => {
     //auth
@@ -15,6 +15,10 @@ export const getSidebarItems = () => {
         {
             path: getRouteLogin(),
             text: 'login'
+        },
+        {
+            path: getRouteSettings(),
+            text: 'Настройки'
         }
     ];
 

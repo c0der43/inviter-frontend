@@ -7,6 +7,26 @@
         background-color: var(--primary-color);
         color: var(--secondary-color);
     }
+
+    &.outline {
+        background: none;
+        border: 1px solid var(--iverted-secondary-color);
+        border-radius: 16px;
+        color: var(--inverted-secondary-color);
+    }
+
+    &.neon {
+        color: #FFA1F5;
+        background: transparent;
+        border: #FFA1F5 2px solid;
+        display: inline-block;
+        font-weight: 600;
+        text-shadow: 0 0 1em currentColor;
+    }
+
+    &:disabled{
+        background-color: gray;
+    }
 }
 
 .m{
@@ -15,20 +35,4 @@
 
 .normal {
 
-}
-
-.outline {
-    background: none;
-    border: 1px solid var(--iverted-secondary-color);
-    border-radius: 16px;
-    color: var(--inverted-secondary-color);
-}
-
-.neon {
-    color: #FFA1F5;
-    background: transparent;
-    border: #FFA1F5 2px solid;
-    display: inline-block;
-    font-weight: 600;
-    text-shadow: 0 0 1em currentColor;
 }
