@@ -2,27 +2,26 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ThunkConfig} from "@/app/providers/StoreProvider";
 import {CreateCommentDto} from "@/features/CommentForm/dto/createCommentDto.ts";
 import {
-    getCommentFormTextSelector
-} from "@/features/CommentForm/model/selectors/getCommentFormTextSelector/getCommentFormTextSelector.ts";
+    fetchGetCommentsByEventId
+} from "@/pages/EventPage/model/services/fetchGetCommentsByEventId/fetchGetCommentsByEventId.ts";
 
-export const fetchAddComment = createAsyncThunk<void, number, ThunkConfig<string>>(
+export const fetchAddComment = createAsyncThunk<void, {eventId: number, text: string}, ThunkConfig<string>>(
     'commentForm/addComment',
-    async (eventId, thunkAPI) => {
+    async (props, thunkAPI) => {
         const {
             extra,
             rejectWithValue,
-            getState
+            dispatch
         } = thunkAPI;
 
-        const text = getCommentFormTextSelector(getState());
-
         const dto: CreateCommentDto = {
-            text,
-            eventId
+            text: props.text,
+            eventId: props.eventId
         };
 
         try{
             await extra.api.post(`/comment/create`, dto);
+            dispatch(fetchGetCommentsByEventId(props.eventId + ''));
         }catch (e){
             return rejectWithValue('error');
         }

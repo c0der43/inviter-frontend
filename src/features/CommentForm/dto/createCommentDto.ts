@@ -1,4 +1,4 @@
-export interface createCommentDto {
+export interface CreateCommentDto {
     text: string;
     eventId: number;
 }

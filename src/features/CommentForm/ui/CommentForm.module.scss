@@ -1,24 +1,28 @@
 .CommentForm {
   display: flex;
   align-items: center;
+  gap: 16px;
 
   .AvatarAndComment{
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 100%;
+    width: 70%;
 
     textarea{
       background: transparent;
       border: none;
       outline: none;
       flex-wrap: wrap;
-      width: 100%;
       height: fit-content;
       color: var(--primary-color);
       overflow: hidden;
       min-height: 50px;
       max-height: 100px;
     }
+  }
+
+  .btn_form{
+    width: 30%;
   }
 }

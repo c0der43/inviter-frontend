@@ -6,15 +6,15 @@
 
 .app {
   font-family: var(--font-family-main);
-
+  position: relative;
   color: var(--primary-color);
   background-color: var(--bg-color);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 
   display: flex;
   min-height: 100vh;

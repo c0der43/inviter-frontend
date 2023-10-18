@@ -7,6 +7,10 @@
   gap: 8px;
   z-index: 1;
 
+  @media (max-width: 600px) {
+    padding: 8px 14px;
+  }
+
   &.dotted {
     border: 3px dashed var(--secondary-color);
     background: transparent;

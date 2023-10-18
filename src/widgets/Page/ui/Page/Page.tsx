@@ -2,8 +2,6 @@ import {FC, MutableRefObject, ReactNode, useRef} from "react";
 import styles from './Page.module.scss';
 import classNames from "classnames";
 import {useInfiniteScroll} from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll.ts";
-import {SvgBgImg} from "@/shared/ui/SvgBgImg";
-import {PageHeader} from "@/widgets/Page/ui/PageHeader/PageHeader.tsx";
 
 
 interface PageProps {
@@ -30,7 +28,7 @@ export const Page: FC<PageProps> = (props) => {
 
     return <main ref={wrapperRef}
         className={classNames(styles.Page, className)}>
-        <PageHeader/>
+        {/*<PageHeader/>*/}
         {/*<SvgBgImg className={styles.bg_img}/>*/}
         <div className={styles.content_container}>
             {children}

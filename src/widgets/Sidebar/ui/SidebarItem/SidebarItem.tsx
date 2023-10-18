@@ -20,7 +20,7 @@ export const SidebarItem: FC<SidebarItemProps> = (props) => {
 
     const setNewTitle = useCallback(() => {
         setTitle?.(item.text);
-    },[])
+    },[item])
 
     return <AppLink
         to={item.path}

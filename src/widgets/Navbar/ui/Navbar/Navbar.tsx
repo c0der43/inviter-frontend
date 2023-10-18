@@ -6,7 +6,7 @@ export const Navbar: FC = memo(() => {
 
     return (
         <header className={styles.Navbar}>
-            <Text title={'Inviter'} size={'l'} bold={true}/>
+            <Text title={'Inviter(beta)'} size={'l'} bold={true}/>
         </header>
     );
 

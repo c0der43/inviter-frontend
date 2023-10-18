@@ -15,6 +15,10 @@ export const uiSlice = createSlice({
         },
         setVisibleNavbar: (state, {payload}: PayloadAction<boolean>) => {
             state.navbar = payload;
+        },
+        setVisibleNavbarAndSidebar: (state, {payload}: PayloadAction<boolean>) => {
+            state.navbar = payload;
+            state.sidebar = payload;
         }
     }
 });

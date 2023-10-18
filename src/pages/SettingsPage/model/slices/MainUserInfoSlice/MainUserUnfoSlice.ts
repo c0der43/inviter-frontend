@@ -21,7 +21,8 @@ export const mainUserInfoSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(fetchInitUser.fulfilled, (state, {payload}: PayloadAction<User>) => {
-            state.lastName = payload.name;
+            state.lastName = payload.lastName;
+            state.firstName = payload.firstName;
         })
     }
 });

@@ -3,9 +3,9 @@ import {Input} from "@/shared/ui/Input";
 import classNames from "classnames";
 import styles from './MainPageFilters.module.scss';
 import {Button} from "@/shared/ui/Button";
-import {AppDatePicker} from "@/shared/ui/AppDatePicker";
 import { BsList, BsGrid } from "react-icons/bs";
 import {useMainPageFilters} from "@/pages/MainPage/lib/hooks/useMainPageFilter.ts";
+import {Text} from "@/shared/ui/Text";
 
 
 interface MainPageFiltersProps{
@@ -26,9 +26,10 @@ export const MainPageFilters: FC<MainPageFiltersProps> = memo((props) => {
 
     return <>
         <div className={classNames(styles.MainPageFilters,className)}>
-            <div className={styles.filter_item}>
-                <AppDatePicker className={styles.picker} placeholder={'Дата ивента'}/>
-            </div>
+            {/*<div className={styles.filter_item}>*/}
+            {/*    <AppDatePicker className={styles.picker} placeholder={'Дата ивента'}/>*/}
+            {/*</div>*/}
+            <Text title={'GG ивентов по миру!'} bold size={'l'}/>
             <Input
                 onChange={onChangeSearch}
                 design={'solid'}
@@ -36,7 +37,6 @@ export const MainPageFilters: FC<MainPageFiltersProps> = memo((props) => {
                 value={search}
                 size={'l'}/>
 
-            {/*ВЫНЕСТИ ЭТО В ОТДЕЛЬНЫЙ КОМПОНЕНТ*/}
             <div className={styles.date_and_type_views}>
                 <div>
                     <Button

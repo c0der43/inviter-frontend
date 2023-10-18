@@ -1,8 +1,8 @@
-import {EventPageSchema} from "@/pages/EventPage/model/types/eventPageSchema.ts";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {fetchGetEventById, IEvent} from "@/entities/Event";
+import {EventPageDataSchema} from "@/pages/EventPage/model/types/eventPageDataSchema.ts";
 
-const initialState: EventPageSchema = {
+const initialState: EventPageDataSchema = {
     isLoading: false,
     event: undefined
 }
@@ -26,5 +26,5 @@ export const eventPageSlice = createSlice({
 });
 
 export const {
-    reducer: eventPageReducer
+    reducer: eventPageEventReducer
 } = eventPageSlice;

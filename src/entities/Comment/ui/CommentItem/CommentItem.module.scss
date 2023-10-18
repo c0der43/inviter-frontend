@@ -1,0 +1,25 @@
+.CommentItem{
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  //background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 8px;
+
+  .comment_body{
+    width: 100%;
+    .header{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .three{
+    height: 25px;
+    cursor: pointer;
+  }
+
+  .settings_comment{
+  }
+}

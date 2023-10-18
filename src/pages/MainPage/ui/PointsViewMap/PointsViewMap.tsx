@@ -5,10 +5,12 @@ import {useSelector} from "react-redux";
 
 interface PointsViewMapProps{
     className?: string;
+    borderRadius?: number;
 }
 export const PointsViewMap: FC<PointsViewMapProps> = memo((props) => {
 
     const {
+        borderRadius = 0,
         className
     } = props;
 
@@ -16,7 +18,7 @@ export const PointsViewMap: FC<PointsViewMapProps> = memo((props) => {
 
     return <>
         <AppGoogleMap
-            borderRadius={0}
+            borderRadius={borderRadius}
             zoom={2}
             eventsData={events}
             className={className}/>
