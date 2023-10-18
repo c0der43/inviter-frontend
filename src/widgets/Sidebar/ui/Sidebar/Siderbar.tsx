@@ -4,11 +4,14 @@ import {ProfileView} from "../ProfileView/ProfileView.tsx";
 import {SidebarItem} from "../SidebarItem/SidebarItem.tsx";
 import {getSidebarItems} from "@/widgets/Sidebar/model/selectors/getSidebarItems.ts";
 import {ThemeSwitcher} from "@/features/ThemeSwitcher";
-
+import {useSelector} from "react-redux";
+import {getUserDataSelector} from "@/entities/User/model/selectors/getUserDataSelector/getUserDataSelector.ts";
 
 export const Sidebar: FC = memo(() => {
 
-    const sidebarItemsList =  getSidebarItems();
+    const user = useSelector(getUserDataSelector);
+
+    const sidebarItemsList =  getSidebarItems(user);
 
     const routeItemsList = useMemo(() =>
         sidebarItemsList.map((item) => <SidebarItem item={item} key={item.path}/>)
@@ -17,7 +20,7 @@ export const Sidebar: FC = memo(() => {
     return (
         <aside className={styles.Sidebar}>
             <div className={styles.content}>
-                <ProfileView/>
+                <ProfileView user={user}/>
                 <div className={styles.items}>
                     {routeItemsList}
                 </div>

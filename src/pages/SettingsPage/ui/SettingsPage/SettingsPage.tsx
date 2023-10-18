@@ -16,6 +16,10 @@ import {useSelector} from "react-redux";
 import {getLastName} from "@/pages/SettingsPage/model/selectors/MainUserInfoSliceSelector/getLastName/getLastName.ts";
 import {getEmail} from "@/pages/SettingsPage/model/selectors/SecurityPageSliceSelector/getEmail/getEmail.ts";
 import {MotionUserCard} from "@/shared/ui/UserCard/UserCard.tsx";
+import {
+    getFirstName
+} from "@/pages/SettingsPage/model/selectors/MainUserInfoSliceSelector/getFirstName/getFirstName.ts";
+import {getUserAvatarSelector} from "@/entities/User/model/selectors/getUserAvatarSelector/getUserAvatarSelector.ts";
 
 
 const reducersList: ReducerList = {
@@ -26,8 +30,10 @@ const SettingsPage: FC = memo(() => {
 
     const dispatch = useAppDispatch();
 
-    const firstName = useSelector(getLastName);
+    const lastName = useSelector(getLastName);
+    const firstName = useSelector(getFirstName);
     const email = useSelector(getEmail);
+    const avatar = useSelector(getUserAvatarSelector);
 
     useEffect(() => {
         dispatch(fetchInitUser());
@@ -49,7 +55,8 @@ const SettingsPage: FC = memo(() => {
                             transition={{
                                 delay: 0.5
                             }}
-                            lastName={'xd'}
+                            urlAvatar={`http://localhost:5000/uploads_avatar/${avatar?.fileName}`}
+                            lastName={lastName}
                             email={email}
                             firstName={firstName}/>
 
@@ -82,6 +89,7 @@ const SettingsPage: FC = memo(() => {
                             delay: 1.5
                         }}
                         firstName={firstName}
+                        lastName={lastName}
                         className={styles.user_data}/>
                 </div>
             </Page>

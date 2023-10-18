@@ -6,6 +6,13 @@
     width: 100%;
     height: 100%;
     align-items: center;
+
+    .photo_profile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
   }
 
   .info{

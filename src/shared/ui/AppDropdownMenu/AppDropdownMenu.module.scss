@@ -1,0 +1,42 @@
+.AppDropdownMenu {
+  position: relative;
+  display: flex;
+
+  .btn{
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border-style: none;
+    height: fit-content;
+    color: var(--primary-color);
+
+    .three{
+      height: 30px;
+    }
+  }
+
+  .items{
+    margin-left: 25px;
+    position: absolute;
+    border-radius: 8px;
+    white-space: nowrap;
+    width: fit-content;
+    background: var(--secondary-color);
+    flex-direction: column;
+
+    @media (max-width: 750px) {
+      margin-left: -120px;
+      margin-top: 10%;
+    }
+
+    .item{
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+
+      &:hover{
+        background-color: var(--gray);
+      }
+    }
+  }
+}

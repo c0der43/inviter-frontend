@@ -4,6 +4,10 @@
   object-fit: cover;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 .ChildrenContainer {
   background-color: var(--secondary-color);
   border: 1px solid var(--primary-color);

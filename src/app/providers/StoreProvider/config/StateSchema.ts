@@ -9,6 +9,7 @@ import {MainPageSchema} from "@/pages/MainPage";
 import {EventPageSchema} from "@/pages/EventPage/model/types/eventPageSchema.ts";
 import {SettingsPageSchema} from "@/pages/SettingsPage/model/types/SettingsPageSchema.ts";
 import {rtkApi} from "@/shared/api/rtkApi.ts";
+import {MyEventsPageSchema} from "@/pages/MyEventsPage/model/types/myEventsPageSchema.ts";
 
 export interface StateSchema {
     ui: UISchema;
@@ -21,6 +22,7 @@ export interface StateSchema {
     mainPage?: MainPageSchema;
     eventPage?: EventPageSchema;
     settingsPage?: SettingsPageSchema;
+    myEventsPage?: MyEventsPageSchema;
 }
 
 export type ReducerList = {

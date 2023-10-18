@@ -1,20 +1,19 @@
 .Page{
-  padding: 15px var(--padding-x);
+  padding: 100px var(--padding-x);
   flex-grow: 1;
-  //height: calc(100vh - var(--havbar-height));
-  height: 100vh;
   position: relative;
-  //overflow-y: hidden;
+  height: 100vh;
   overflow-x: hidden;
-  //background-color: white;
+
+  @media (max-width: 600px) {
+    padding: 100px 15px;
+  }
 
   .content_container{
     height: fit-content;
-    //background-color: #FFA1F5;
   }
 
   .trigger{
-    //background-color: #006bff;
     height: 10px;
     margin-bottom: 10px;
   }

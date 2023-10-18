@@ -3,24 +3,28 @@ import styles from './Text.module.scss';
 import classNames from "classnames";
 
 
-export type TextStyle = 'primary' | 'error';
+export type TextStyle = 'primary' | 'error' | 'stroke';
 
 export type TextAlign = 'right' | 'left' | 'center';
 
-export type TextSize = 's' | 'm' | 'l';
+export type TextSize = 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
     s: 'h3',
     m: 'h2',
-    l: 'h1'
+    l: 'h1',
+    xl: 'h1',
+    xxl: 'h1'
 };
 
 const mapSizeToClass: Record<TextSize, string> = {
     s: styles.size_s,
     m: styles.size_m,
-    l: styles.size_l
+    l: styles.size_l,
+    xl: styles.size_xl,
+    xxl: styles.size_xxl
 }
 
 interface TextProps {

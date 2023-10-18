@@ -1,5 +1,5 @@
 import {
-    AppRoutes,
+    AppRoutes, getRouteAbout,
     getRouteEventDetails,
     getRouteLogin,
     getRouteMain,
@@ -12,6 +12,7 @@ import {MyEventsPage} from "@/pages/MyEventsPage";
 import {LoginPage} from "@/pages/Login";
 import {EventPage} from "@/pages/EventPage";
 import {SettingsPage} from "@/pages/SettingsPage";
+import {AboutPage} from "@/pages/AboutPage";
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps>  = {
     [AppRoutes.MAIN]: {
@@ -20,7 +21,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps>  = {
     },
     [AppRoutes.MY_EVENTS]: {
         path: getRouteMyEvents(),
-        element: <MyEventsPage/>
+        element: <MyEventsPage/>,
+        authOnly: true
     },
     [AppRoutes.LOGIN]: {
         path: getRouteLogin(),
@@ -32,6 +34,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps>  = {
     },
     [AppRoutes.SETTINGS]: {
         path: getRouteSettings(),
-        element: <SettingsPage/>
+        element: <SettingsPage/>,
+        authOnly: true
+    },
+    [AppRoutes.ABOUT]: {
+        path: getRouteAbout(),
+        element: <AboutPage/>
     }
 }

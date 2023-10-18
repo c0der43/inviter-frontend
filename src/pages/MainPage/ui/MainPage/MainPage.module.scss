@@ -3,12 +3,29 @@
   gap: 25px;
   justify-content: space-between;
 
+  @media (max-width: 850px) {
+    flex-direction: column;
+  }
+
   .tags_container{
     margin-top: 15px;
   }
 
   .filters_and_results {
     width: 60%;
+
+    @media (max-width: 850px) {
+      width: 100%;
+    }
+
+    .map_in_filter{
+      display: none;
+
+      @media (max-width: 850px) {
+        display: block;
+        margin: 15px 0;
+      }
+    }
 
     .items{
       margin-top: 25px;
@@ -20,6 +37,10 @@
     height: 100vh;
     position: sticky;
     top: 0;
+
+    @media (max-width: 850px) {
+      display: none;
+    }
 
     .map{
       width: 100%;

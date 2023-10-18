@@ -4,6 +4,7 @@ import {EventItem, EventView} from "../EventItem/EventItem.tsx";
 import {IEvent} from "@/entities/Event";
 import {EventItemSkeleton} from "@/entities/Event/ui/EventItemSkeleton/EventItemSkeleton.tsx";
 import classNames from "classnames";
+import {EventItemStripsSkeleton} from "@/entities/Event/ui/EventItemStripsSkeleton/EventItemStripsSkeleton.tsx";
 
 interface EventListProps {
     eventList?: Array<IEvent>;
@@ -12,9 +13,9 @@ interface EventListProps {
     view: EventView;
 }
 
-const getSkeletons = () => new Array(3)
+const getSkeletons = (typeView: EventView) => new Array(3)
         .fill(0)
-        .map((_, index) => <EventItemSkeleton key={index}/>)
+        .map((_, index) => typeView == 'CARD' ? <EventItemSkeleton key={index}/> : <EventItemStripsSkeleton/>)
 export const EventList: FC<EventListProps> = memo((props) => {
 
     const {
@@ -33,7 +34,7 @@ export const EventList: FC<EventListProps> = memo((props) => {
                         key={event.id}
                         view={view}/>)
             }
-            {isLoading && getSkeletons()}
+            {isLoading && getSkeletons(view)}
         </div>
     </>
 });

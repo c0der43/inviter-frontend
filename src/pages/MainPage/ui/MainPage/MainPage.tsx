@@ -12,12 +12,10 @@ import {
 import {PointsViewMap} from "@/pages/MainPage/ui/PointsViewMap/PointsViewMap.tsx";
 import {MainPageFilters} from "@/pages/MainPage/ui/MainPageFilters/MainPageFilters.tsx";
 import styles from './MainPage.module.scss';
-import {uiActions} from "@/features/UI";
 import {useSelector} from "react-redux";
 import {
     getMainViewSelector
 } from "@/pages/MainPage/model/selectors/mainPageSelectors/getMainViewSelector/getMainViewSelector.ts";
-import {Text} from "@/shared/ui/Text";
 import {useGetAllTagsQuery} from "@/entities/Tag/api/fetchTagApi.ts";
 import {TagsView} from "@/shared/ui/TagsView";
 
@@ -40,11 +38,11 @@ const MainPage: FC = memo(() => {
 
 
     useEffect(() => {
-        dispatch(uiActions.setVisibleNavbar(false));
+        //dispatch(uiActions.setVisibleNavbar(false));
         dispatch(fetchGetEventsWithPagination({}));
 
         return () => {
-            dispatch(uiActions.setVisibleNavbar(true));
+            //dispatch(uiActions.setVisibleNavbar(true));
         }
     }, [dispatch]);
 
@@ -57,11 +55,9 @@ const MainPage: FC = memo(() => {
             <Page onScrollEnd={onLoadNextPage}>
                 <div className={styles.MainPage}>
                     <div className={styles.filters_and_results}>
-
-                        <div style={{display:'flex', alignItems: 'center'}}>
-                            <Text title={'GG ивентов по миру!'} bold size={'l'}/>
-                        </div>
-
+                        <PointsViewMap
+                            borderRadius={8}
+                            className={styles.map_in_filter}/>
                         <MainPageFilters className={styles.filters}/>
                         <TagsView tags={tags ?? []} className={styles.tags_container}/>
                         <EventsList classNames={styles.items} view={view}/>
